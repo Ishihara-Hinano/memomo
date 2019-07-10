@@ -13,4 +13,24 @@ class Memo extends Model
     public $incrementing = false;
 
     use ModelConfig;
+
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'id',
+    ];
+
+    /**
+     * User
+     * 1対1
+     * @return [type] [description]
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -32,7 +32,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'id', 'password', 'remember_token',
     ];
 
     /**
@@ -43,4 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * ユーザーのメモ
+     * １対多
+     * @return HasMany
+     */
+    public function memos()
+    {
+        return $this->hasMany(Memo::class, 'user_id', 'id');
+    }
 }

@@ -19,4 +19,13 @@ trait ModelConfig
             $model->id = Str::uuid();
         });
     }
+    
+    /**
+     * カラム配列で取得
+     * @return array
+     */
+    public function attributes()
+    {
+        return $this->attributesToArray();
+    }
 }
