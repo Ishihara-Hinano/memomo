@@ -16,7 +16,7 @@ class CreateMemosTable extends Migration
         Schema::create('memos', function (Blueprint $table) {
             $table->uuid('id');
             $table->uuid('user_id');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->string('title');
             $table->text('content');
             $table->timestamps();
