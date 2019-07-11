@@ -11,4 +11,37 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+    hr {
+        border-color: $white;
+        width: 350px;
+    }
+
+    a, label {
+        color: $white;
+    }
+
+    input:not([type='checkbox']) {
+        height: 48px;
+        border: 1px solid $white;
+    }
+
+    #email {
+    border-radius: 7px 7px 0 0;
+    border-bottom: 1px solid #ced4da;
+    }
+    #password {
+    border-radius: 0 0 0 7px;
+    }
+
+    .input-group {
+        .input-group-prepend {
+            margin: 0;
+
+            .input-group-text {
+                border: none;
+                background-color: $white;
+                border-radius: 0 0 7px 0;
+            }
+        }
+    }
 }

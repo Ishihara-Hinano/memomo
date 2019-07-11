@@ -1,0 +1,73 @@
+.auth {
+    background: $theme-gradient;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+
+    .auth-app-name {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        font-size: 21px;
+        color: $white;
+    }
+
+    .auth-footer {
+        position: absolute;
+        bottom: 8px;
+        right: 16px;
+
+        a{
+            margin-left: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            .footer-link-separator {
+                color: rgba(230, 234, 237, 0.2);
+            }
+            &:hover {
+                color: rgba(255, 255, 255);
+                text-decoration: none;
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            display: block !important;
+            width: 100%;
+            text-align: center;
+
+            a{
+                display: block !important;
+            }
+
+            .footer-link-separator {
+                display: none !important;
+            }
+        }
+
+    }
+
+
+    .card {
+        border: none;
+        background: none;
+        box-shadow: none;
+
+        .card-body {
+            .logo {
+                width: 120px;
+                height: 120px;
+                background-color: $white;
+                border-radius: 28px;
+
+                img {
+                    width: 90px;
+                    height: 90px;
+                }
+            }
+            .sign-in-text {
+                color: $white;
+                font-size: 21px;
+            }
+        }
+    }
+}

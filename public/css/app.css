@@ -10644,6 +10644,81 @@ a.text-dark:focus {
   }
 }
 
+.auth {
+  background: linear-gradient(0deg, #e15f9e, #e87b79);
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.auth .auth-app-name {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 21px;
+  color: #fff;
+}
+
+.auth .auth-footer {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+.auth .auth-footer a {
+  margin-left: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.auth .auth-footer a .footer-link-separator {
+  color: rgba(230, 234, 237, 0.2);
+}
+
+.auth .auth-footer a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 767.98px) {
+  .auth .auth-footer {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .auth .auth-footer a {
+    display: block !important;
+  }
+
+  .auth .auth-footer .footer-link-separator {
+    display: none !important;
+  }
+}
+
+.auth .card {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.auth .card .card-body .logo {
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 28px;
+}
+
+.auth .card .card-body .logo img {
+  width: 90px;
+  height: 90px;
+}
+
+.auth .card .card-body .sign-in-text {
+  color: #fff;
+  font-size: 21px;
+}
+
 .card {
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
@@ -10653,9 +10728,43 @@ a.text-dark:focus {
 .card-body h5 {
   font-size: 1.5rem;
   color: #e15f9e;
-  background: -webkit-linear-gradient(0deg, #e15f9e, #e87b79);
+  background: linear-gradient(0deg, #e15f9e, #e87b79);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.card-body hr {
+  border-color: #fff;
+  width: 350px;
+}
+
+.card-body a,
+.card-body label {
+  color: #fff;
+}
+
+.card-body input:not([type=checkbox]) {
+  height: 48px;
+  border: 1px solid #fff;
+}
+
+.card-body #email {
+  border-radius: 7px 7px 0 0;
+  border-bottom: 1px solid #ced4da;
+}
+
+.card-body #password {
+  border-radius: 0 0 0 7px;
+}
+
+.card-body .input-group .input-group-prepend {
+  margin: 0;
+}
+
+.card-body .input-group .input-group-prepend .input-group-text {
+  border: none;
+  background-color: #fff;
+  border-radius: 0 0 7px 0;
 }
 
 .modal .modal-dialog .modal-content .modal-header {
@@ -10664,7 +10773,7 @@ a.text-dark:focus {
 
 .modal .modal-dialog .modal-content .modal-header .modal-title {
   color: #e15f9e;
-  background: -webkit-linear-gradient(0deg, #e15f9e, #e87b79);
+  background: linear-gradient(0deg, #e15f9e, #e87b79);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
