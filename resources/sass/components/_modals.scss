@@ -1,0 +1,19 @@
+.modal {
+    .modal-dialog {
+        .modal-content {
+            .modal-header {
+                border-bottom-color: $theme-color;
+
+                .modal-title {
+                    color: $theme-color;
+                    background: $theme-gradient;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+            .modal-footer {
+                border-top: none;
+            }
+        }
+    }
+}

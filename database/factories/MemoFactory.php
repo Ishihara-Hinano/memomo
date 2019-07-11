@@ -9,6 +9,6 @@ $factory->define(Memo::class, function (Faker $faker) {
     return [
         'user_id' => 1,
         'title' => $faker->text(50),
-        'content' => $faker->text(300)
+        'content' => $faker->text(2000)
     ];
 });

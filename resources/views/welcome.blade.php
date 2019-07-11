@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>memomo</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -61,6 +61,15 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .title {
+                font-size: 96px;
+                color: #e15f9e;
+                background: -webkit-linear-gradient(0deg, #e15f9e, #e87b79);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
         </style>
     </head>
     <body>
@@ -81,17 +90,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    memomo
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/Ishihara-Hinano/memomo" target="_blank">hinano ver 1.0.0</a>
                 </div>
             </div>
         </div>

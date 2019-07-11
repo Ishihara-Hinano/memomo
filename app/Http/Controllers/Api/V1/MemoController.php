@@ -16,7 +16,7 @@ class MemoController extends Controller
      */
     public function index(Request $request) {
 
-        return MemoResource::collection($request->user()->memos()->with(['user'])->get());
+        return MemoResource::collection($request->user()->memos()->with(['user'])->latest()->get());
     }
 
     /**

@@ -14,6 +14,7 @@ Route::view('/', 'welcome');
 
 Route::middleware(['auth'])->group(function () {
     Route::view('/developer', 'developer');
+    Route::view('home', 'home');
 });
 
 Auth::routes();
