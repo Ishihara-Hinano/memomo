@@ -53,7 +53,7 @@ class Memo extends Model
 
     /**
      * 画像のURL
-     *
+     * php artisan storage:link
      * @return |null
      */
     public function getImageUrlAttribute()

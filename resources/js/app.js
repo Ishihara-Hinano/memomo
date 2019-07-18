@@ -28,4 +28,10 @@ window.Vue = require('vue');
 
 const app = new Vue({
     el: '#app',
+    methods: {
+        openCreateMemoModal: function () {
+            this.$refs.createMemoModal.open();
+            this.$refs.memoList.push();
+        }
+    }
 });

@@ -10782,3 +10782,7 @@ a.text-dark:focus {
   border-top: none;
 }
 
+.text-theme {
+  color: #e15f9e !important;
+}
+
