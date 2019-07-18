@@ -38844,11 +38844,11 @@ var render = function() {
       }
     },
     [
-      _vm.memo.attributes.image_path
+      _vm.memo.attributes.image_url
         ? _c("img", {
             staticClass: "card-img-top",
             attrs: {
-              src: _vm.memo.attributes.image_path,
+              src: _vm.memo.attributes.image_url,
               alt: _vm.memo.attributes.title
             }
           })
