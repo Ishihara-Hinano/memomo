@@ -1915,6 +1915,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreateMemoModal",
@@ -1937,6 +1947,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     close: function close() {
       this.form.title = null;
       this.form.content = null;
+      this.form.imagePicker = null;
       $("#createMemoModal").modal('hide');
     },
     createButtonClicked: function () {
@@ -1945,29 +1956,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var _this = this;
 
-        var formData, config;
+        var formData, image, config;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 formData = new FormData();
-                _context.t0 = formData;
-                _context.next = 4;
+                _context.next = 3;
                 return this.form.imagePicker.promisedBlob('image/jpeg', 0.8);
 
-              case 4:
-                _context.t1 = _context.sent;
+              case 3:
+                image = _context.sent;
 
-                _context.t0.append.call(_context.t0, 'image', _context.t1);
+                if (image) {
+                  formData.append('image', image);
+                }
 
-                formData.append('title', this.form.title);
-                formData.append('content', this.form.content);
+                if (this.form.title) {
+                  formData.append('title', this.form.title);
+                }
+
+                if (this.form.content) {
+                  formData.append('content', this.form.content);
+                }
+
                 config = {
                   headers: {
                     'content-type': 'multipart/form-data'
                   }
                 };
-                axios.post('api/v1/memos', this.form).then(function (response) {
+                axios.post('api/v1/memos', formData, config).then(function (response) {
                   _this.close();
 
                   _this.$emit('memo-has-created', response.data.data);
@@ -1975,7 +1993,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log(error);
                 });
 
-              case 10:
+              case 9:
               case "end":
                 return _context.stop();
             }
@@ -2068,6 +2086,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -41613,6 +41634,16 @@ var render = function() {
                   _c("label", { attrs: { for: "content" } }, [_vm._v("Image")]),
                   _vm._v(" "),
                   _c("croppa", {
+                    attrs: {
+                      height: 400,
+                      width: 400,
+                      placeholder: "画像を選んでください",
+                      "placeholder-color": "#fff",
+                      "placeholder-font-size": 20,
+                      disabled: false,
+                      "prevent-white-space": false,
+                      "zoom-speed": 5
+                    },
                     model: {
                       value: _vm.form.imagePicker,
                       callback: function($$v) {
@@ -41837,6 +41868,18 @@ var render = function() {
                       _vm._s(_vm.memo.attributes.content) +
                       "\n            "
                   )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _vm.memo.attributes.image_url
+                    ? _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src: _vm.memo.attributes.image_url,
+                          alt: _vm.memo.attributes.title
+                        }
+                      })
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _vm._m(1)

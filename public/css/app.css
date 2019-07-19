@@ -10786,3 +10786,9 @@ a.text-dark:focus {
   color: #e15f9e !important;
 }
 
+.croppa-container {
+  background-color: #c0c0c0;
+  width: 400px;
+  height: 400px;
+}
+

@@ -12,6 +12,9 @@
                 <p class="text-secondary">Last updated {{ memo.attributes.updated_at_for_human }}</p>
                 {{ memo.attributes.content }}
             </div>
+            <div class="modal-body">
+                <img v-if="memo.attributes.image_url" :src="memo.attributes.image_url" class="card-img-top" :alt="memo.attributes.title">
+            </div>
             <div class="modal-footer d-frex justify-content-center">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
