@@ -18,5 +18,6 @@ Route::middleware('auth:api')->prefix('/v1')->namespace('Api\V1')->group(functio
     Route::get('/memos','MemoController@index')->name('memosApi');
     Route::post('/memos','MemoController@store')->name('storeMemoApi');
     Route::get('/memos/{memo}','MemoController@show')->name('memoApi');
+    Route::patch('/memos/{memo}','MemoController@update')->name('updateMemoApi');
 
 });

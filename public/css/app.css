@@ -10792,3 +10792,12 @@ a.text-dark:focus {
   height: 400px;
 }
 
+.croppa-container .icon-resize {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  font-size: 16px;
+  width: 2em;
+  cursor: nwse-resize;
+}
+

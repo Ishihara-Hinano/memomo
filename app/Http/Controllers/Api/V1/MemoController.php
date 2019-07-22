@@ -63,4 +63,29 @@ class MemoController extends Controller
             ->response()
             ->setStatusCode(201);
     }
+
+    // メモ内容更新メソッド
+    public function update(Request $request, Memo $memo)
+    {
+        $this->validate($request, [
+            'title' => 'sometimes|required|string',
+            'content' => 'sometimes|required|string',
+            'image' => 'sometimes|nullable|image',
+        ]);
+
+        if ($request->has('title')) {
+            $memo->title = $request->input('title');
+        }
+        if ($request->has('content')) {
+            $memo->content = $request->input('content');
+        }
+        if ($request->hasFile('image')) {
+            $path = $request->image->store('images', 'public');
+            $memo->image_path = $path;
+        }
+
+        $memo->update();
+
+        return new MemoResource($memo);
+    }
 }

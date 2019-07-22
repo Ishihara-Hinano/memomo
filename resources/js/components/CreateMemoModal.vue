@@ -65,6 +65,8 @@
                 this.form.imagePicker = null;
                 $("#createMemoModal").modal('hide');
             },
+            // formData(オブジェクト) に画像を送る、他のデータも一緒に
+            // JSONは文字列のみわかる　バイナリデータは送れないのでformDataに入れる
             createButtonClicked: async function () {
                 let formData = new FormData();
                 let image = await this.form.imagePicker.promisedBlob('image/jpeg', 0.8);

@@ -1925,6 +1925,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreateMemoModal",
@@ -1936,9 +1939,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       form: {
         title: null,
         content: null,
-        imagePicker: {}
+        imagePicker: {},
+        resizing: false,
+        resizableW: 200,
+        resizableH: 200
       }
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    document.documentElement.addEventListener('mousemove', function (evt) {
+      evt.preventDefault();
+
+      _this.onResizeTouchMove(evt);
+    });
+    document.documentElement.addEventListener('mouseup', function (evt) {
+      evt.preventDefault();
+
+      _this.onResizeTouchEnd(evt);
+    });
   },
   methods: {
     open: function open() {
@@ -1954,7 +1974,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _createButtonClicked = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this = this;
+        var _this2 = this;
 
         var formData, image, config;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -1986,9 +2006,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 };
                 axios.post('api/v1/memos', formData, config).then(function (response) {
-                  _this.close();
+                  _this2.close();
 
-                  _this.$emit('memo-has-created', response.data.data);
+                  _this2.$emit('memo-has-created', response.data.data);
                 })["catch"](function (error) {
                   console.log(error);
                 });
@@ -2006,7 +2026,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return createButtonClicked;
-    }()
+    }(),
+    onResizeTouchStart: function onResizeTouchStart(evt) {
+      this.resizing = true;
+    },
+    onResizeTouchMove: function onResizeTouchMove(evt) {
+      if (!this.resizing) return;
+      document.documentElement.style.cursor = 'nwse-resize';
+      var croppa = document.querySelector('.resizable-croppa');
+      this.resizableW = evt.clientX - croppa.getBoundingClientRect().left;
+      this.resizableH = evt.clientY - croppa.getBoundingClientRect().top;
+    },
+    onResizeTouchEnd: function onResizeTouchEnd(evt) {
+      this.resizing = false;
+      document.documentElement.style.cursor = 'default';
+    }
   }
 });
 
@@ -41633,25 +41667,41 @@ var render = function() {
                 [
                   _c("label", { attrs: { for: "content" } }, [_vm._v("Image")]),
                   _vm._v(" "),
-                  _c("croppa", {
-                    attrs: {
-                      height: 400,
-                      width: 400,
-                      placeholder: "画像を選んでください",
-                      "placeholder-color": "#fff",
-                      "placeholder-font-size": 20,
-                      disabled: false,
-                      "prevent-white-space": false,
-                      "zoom-speed": 5
-                    },
-                    model: {
-                      value: _vm.form.imagePicker,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "imagePicker", $$v)
+                  _c(
+                    "croppa",
+                    {
+                      attrs: {
+                        height: _vm.resizableH,
+                        width: _vm.resizableW,
+                        placeholder: "画像を選んでください",
+                        "placeholder-color": "#fff",
+                        "placeholder-font-size": 20,
+                        disabled: false,
+                        "prevent-white-space": false,
+                        "zoom-speed": 5
                       },
-                      expression: "form.imagePicker"
-                    }
-                  })
+                      model: {
+                        value: _vm.form.imagePicker,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "imagePicker", $$v)
+                        },
+                        expression: "form.imagePicker"
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "icon-resize",
+                        attrs: { src: "static/resize-bottom-right.svg" },
+                        on: {
+                          mousedown: function($event) {
+                            $event.stopPropagation()
+                            $event.preventDefault()
+                            return _vm.onResizeTouchStart($event)
+                          }
+                        }
+                      })
+                    ]
+                  )
                 ],
                 1
               )
