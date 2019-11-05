@@ -19,5 +19,5 @@ Route::middleware('auth:api')->prefix('/v1')->namespace('Api\V1')->group(functio
     Route::post('/memos','MemoController@store')->name('storeMemoApi');
     Route::get('/memos/{memo}','MemoController@show')->name('memoApi');
     Route::patch('/memos/{memo}','MemoController@update')->name('updateMemoApi');
-
+    Route::delete('/memos/{memo}','MemoController@delete')->name('deleteMemoApi');
 });

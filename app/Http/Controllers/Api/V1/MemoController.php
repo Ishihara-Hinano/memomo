@@ -16,7 +16,12 @@ class MemoController extends Controller
      */
     public function index(Request $request) {
 
-        return MemoResource::collection($request->user()->memos()->with(['user'])->latest()->get());
+        return MemoResource::collection(
+            $request->user()->memos()
+            ->with(['user'])
+            ->latest()
+            ->paginate(20)
+        );
     }
 
     /**
@@ -43,7 +48,7 @@ class MemoController extends Controller
             'content' => 'required|string',
             'image' => 'nullable|image',
         ]);
-        
+
         $memo = new Memo();
 
         if ($request->hasFile('image')) {
@@ -64,7 +69,13 @@ class MemoController extends Controller
             ->setStatusCode(201);
     }
 
-    // メモ内容更新メソッド
+    /**
+     * メモ更新API
+     * @param Request $request
+     * @param Memo $memo
+     * @return MemoResource
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function update(Request $request, Memo $memo)
     {
         $this->validate($request, [
@@ -87,5 +98,17 @@ class MemoController extends Controller
         $memo->update();
 
         return new MemoResource($memo);
+    }
+
+    /**
+     * メモ削除API
+     * @param  Memo   $memo [description]
+     * @return [type]       [description]
+     */
+    public function delete(Memo $memo)
+    {
+        $memo->delete();
+
+        return response(null,204);
     }
 }
